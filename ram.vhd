@@ -3,17 +3,20 @@ use ieee.std_logic_1164.all;
 
 
 entity ram is
+	generic(
+		  width: integer;
+		  n_words: integer);
 		port(
 			clock:   in  std_logic;
-			data:    in  std_logic_vector(31 downto 0);
-			wr_addr: in  integer range 0 to 31;
-			rd_addr: in  integer range 0 to 31;
+			data:    in  std_logic_vector(width downto 0);
+			wr_addr: in  integer range 0 to n_words;
+			rd_addr: in  integer range 0 to n_words;
 			we:      in  std_logic;
-			q:       out std_logic_vector(31 downto 0));
+			q:       out std_logic_vector(width downto 0));
 end ram;
 
 architecture a of ram is
-		type mem is array(0 to 31) of std_logic_vector(31 downto 0);
+		type mem is array(0 to n_words) of std_logic_vector(width downto 0);
 		signal storage: mem;
 begin
   	process(clock)
