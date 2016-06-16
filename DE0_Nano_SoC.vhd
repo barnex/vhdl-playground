@@ -6,6 +6,7 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
 use work.prescaler;
+use work.counter;
 
 entity DE0_Nano_SoC is
 	port (
@@ -18,8 +19,10 @@ entity DE0_Nano_SoC is
 end DE0_Nano_SoC;
 
 architecture a of DE0_Nano_SoC is
+	signal slow_clk: std_logic;
 begin
-		prescale_uart: entity prescaler generic map(25000000) port map(CLOCK_50, LED(0));
-	LED(1) <= '1';
+
+	prescale: entity prescaler generic map(25000000) port map(CLOCK_50, slow_clk);
+	count: entity counter generic map(7) port map(slow_clk, LED);	
 
 end a;
