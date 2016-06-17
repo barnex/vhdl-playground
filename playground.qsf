@@ -148,6 +148,7 @@ set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
 
 
+set_global_assignment -name VHDL_FILE rom.vhd
 set_global_assignment -name VHDL_FILE counter.vhd
 set_global_assignment -name VHDL_FILE ram.vhd
 set_global_assignment -name VHDL_FILE DE0_Nano_SoC.vhd
